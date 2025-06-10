@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../lib/firebase";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 
 export default function LoginPage() {

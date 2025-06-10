@@ -1,34 +1,36 @@
-// ======================================================
-// CONFIGURACIÓN DE FIREBASE PARA NEXT.JS 15 (APP ROUTER)
-// ======================================================
+// src/lib/firebase.ts
+
+// =================================================
+// ARCHIVO DE CONFIGURACIÓN E INICIALIZACIÓN DE FIREBASE
+// Este archivo centraliza la configuración de Firebase para toda la aplicación.
+// Importa las variables de entorno y exporta los servicios inicializados.
+// =================================================
 
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getDatabase } from "firebase/database";
 
-// ===============================
-// ⚙️ Configuración de tu proyecto Firebase
-// Puedes encontrar esta info en el panel de configuración de tu app web
-// ===============================
+// Objeto de configuración de Firebase, utilizando variables de entorno.
+// Es crucial que estas variables estén definidas en el archivo .env.local.
 const firebaseConfig = {
-    apiKey: "AIzaSyCbligeo6IJw5qKhon5z_LzqGE6x-iSrf4",
-    authDomain: "caida-game.firebaseapp.com",
-    projectId: "caida-game",
-    storageBucket: "caida-game.firebasestorage.app",
-    messagingSenderId: "707030975610",
-    appId: "1:707030975610:web:e719a16b40d49008d0e7c3"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// ===============================
-// 🚀 Inicializar la app de Firebase solo una vez (Next.js hace hot reload)
-// getApps() verifica si ya hay una app inicializada
-// ===============================
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+// Inicialización de la aplicación de Firebase.
+// Se comprueba si ya existe una instancia para evitar reinicializaciones (importante en Next.js).
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-// ===============================
-// 📦 Exportar servicios de Firebase: Auth, Firestore y Storage
-// ===============================
-export const auth = getAuth(app);           // Autenticación de usuarios
-export const db = getFirestore(app);        // Base de datos (Cloud Firestore)
-export const storage = getStorage(app);     // Almacenamiento de archivos (Firebase Storage)
+// Exportación de los servicios de Firebase para ser utilizados en otras partes de la aplicación.
+const auth = getAuth(app); // Servicio de Autenticación
+const db = getFirestore(app); // Cloud Firestore DB
+const storage = getStorage(app); // Storage para archivos
+const realtimeDB = getDatabase(app); // Realtime Database para estados en tiempo real
+
+export { app, auth, db, storage, realtimeDB };
