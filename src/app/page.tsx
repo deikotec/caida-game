@@ -1,7 +1,7 @@
 "use client";
 
 import { useUserStore } from "@/stores/useUserStore";
-import Login from "@/components/auth/Login";
+import AuthForm from "@/components/auth/AuthForm"; // Actualizado
 import UserProfile from "@/components/auth/UserProfile";
 import Link from 'next/link';
 
@@ -17,7 +17,6 @@ export default function HomePage() {
   }
 
   return (
-    // Padding ajustado para móviles (p-4) y pantallas más grandes (sm:p-8)
     <main className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8">
       {user ? (
         <div className="text-center">
@@ -29,7 +28,7 @@ export default function HomePage() {
           </Link>
         </div>
       ) : (
-        <Login />
+        <AuthForm /> // Actualizado
       )}
     </main>
   );

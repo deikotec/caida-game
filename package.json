@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dicebear/collection": "^9.2.2",
+    "@dicebear/core": "^9.2.2",
     "@headlessui/react": "^2.2.4",
     "firebase": "^11.9.0",
     "framer-motion": "^12.16.0",
+    "lucide-react": "^0.514.0",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -21,7 +24,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -29,8 +32,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "postcss": "^8.5.4",
-    "tailwindcss": "^4.1.8",
-    "tailwindcss-bg-patterns": "^0.3.0",
+    "tailwindcss": "^4.1.9",
     "typescript": "^5"
   }
 }
