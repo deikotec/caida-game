@@ -1,5 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
+// Tipos existentes sin cambios...
 export interface UserProfile {
     uid: string;
     displayName: string | null;
@@ -16,43 +17,46 @@ export interface Card {
     id: string; // Ej: "1O", "SE"
     rank: string; // Ej: "1", "S"
     suit: string; // Ej: "O", "E"
+    // Se añade el valor numérico para facilitar la ordenación.
+    numericValue: number;
+    displayRank: string; // Ej: "As", "Sota"
 }
 
 export interface GameLogEntry {
     message: string;
-    timestamp: Timestamp | Date;
-    type: 'system' | 'deal' | 'play' | 'capture' | 'canto' | 'score' | 'error';
-    payload?: any; // Para guardar datos adicionales, como las cartas de un canto.
+    // Se actualiza el tipo para incluir los del prototipo.
+    type: 'system' | 'player' | 'opponent' | 'points';
+    // Se simplifica el timestamp para que sea manejado por el cliente.
+    timestamp?: Date;
 }
 
+// Interfaz de GameRoom adaptada para el juego de Caída.
+// NOTA: Se ha simplificado para un juego 1 vs 1 (IA), como en el prototipo.
 export interface GameRoom {
     roomId: string;
     hostId: string;
-    players: string[];
-    playerNicknames: { [key: string]: string };
-    status: 'waiting' | 'choosing_dealer' | 'dealer_action' | 'in_progress' | 'round_over' | 'finished';
-    mode: 'caida';
-    bet: number;
+    players: string[]; // [humanId, aiId]
+    status: 'waiting' | 'choosing_order' | 'in_progress' | 'round_over' | 'finished';
     createdAt: Timestamp;
-    updatedAt: Timestamp;
 
-    // --- Estado detallado del juego ---
-    initialDeckOrder?: Card[]; // Para el registro histórico de la partida.
+    // Estado del juego de Caída
     deck: Card[];
-    hands: { [playerId: string]: Card[] };
+    playerHand: Card[];
+    opponentHand: Card[];
     tableCards: Card[];
-    collectedCards: { [playerId: string]: Card[] };
-    scores: { [playerId: string]: number };
 
-    // --- Control de Turnos y Rondas ---
-    dealerId: string | null; // UID del repartidor actual
-    manoId: string | null; // UID del jugador que es "mano"
-    currentPlayerId: string | null;
+    playerScore: number;
+    opponentScore: number;
+    playerCapturedCount: number;
+    opponentCapturedCount: number;
 
-    // --- Control de Jugadas ---
-    lastPlayedCard: Card | null;
-    lastPlayerToCapture: string | null;
+    isPlayerTurn: boolean;
+    lastCardPlayedByPreviousPlayerRank: string | null;
+    lastPlayerToCapture: 'player' | 'opponent' | null;
 
-    winnerId: string | null;
+    roundStarter: 'player' | 'opponent';
+    handNumber: number;
+
+    winner: 'player' | 'opponent' | null;
     gameLog: GameLogEntry[];
 }

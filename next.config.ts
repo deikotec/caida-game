@@ -9,6 +9,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'i.postimg.cc',
+      },
+      // Se añade el host de las imágenes de las cartas del prototipo HTML.
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       }
     ],
     dangerouslyAllowSVG: true,
