@@ -1,1 +1,0 @@
-Este es el juyego de caidas venezolano corriendo en nextjs
