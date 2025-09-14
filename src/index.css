@@ -1,8 +1,0 @@
-@import "tailwindcss";
-/* Importamos las directivas base de Tailwind CSS. */
-
-
-/* Definición de las variables CSS (custom properties) que ya tenías en tu HTML.
-  Esto nos permite mantener una paleta de colores consistente y centralizada.
-  Ahora estarán disponibles globalmente en toda la aplicación React.
-*/
