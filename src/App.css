@@ -1,42 +1,27 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --bg-dark-primary: #111827;
+  --bg-dark-secondary: #1F2937;
+  --panel-bg: #1a2035;
+  --border-color: #374151;
+  --primary-accent: #4338CA;
+  --primary-accent-hover: #3730A3;
+  --secondary-accent: #10B981;
+  --text-light: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --text-gold: #FBBF24;
+  --danger: #DC2626;
+  --danger-hover: #B91C1C;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Aplicamos estilos base al cuerpo del documento.
+  Usamos la fuente 'Poppins' que importaremos en `index.html`.
+  Los colores de fondo y texto se toman de nuestras variables CSS.
+*/
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background-color: var(--bg-dark-primary);
+  color: var(--text-light);
+  background-image: radial-gradient(circle at top left, rgba(67, 56, 202, 0.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.15), transparent 30%);
 }
