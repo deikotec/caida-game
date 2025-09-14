@@ -1,6 +1,18 @@
 // Importamos las funciones necesarias de los SDK de Firebase.
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInAnonymously, signInWithCustomToken } from "firebase/auth";
+import {
+    getAuth,
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    // --- AÑADIR ESTAS IMPORTACIONES ---
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    OAuthProvider, // Específico para Apple
+    signInWithPopup,
+    updateProfile
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // TODO: Reemplaza el siguiente objeto con la configuración de tu propio proyecto de Firebase.
@@ -27,10 +39,16 @@ export const db = getFirestore(app);
 
 // Exportamos las funciones específicas de autenticación para tener un acceso más limpio.
 export {
+    auth,
+    db,
     onAuthStateChanged,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    signInAnonymously,
-    signInWithCustomToken
+    // --- AÑADIR ESTAS EXPORTACIONES ---
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    OAuthProvider,
+    signInWithPopup,
+    updateProfile
 };
