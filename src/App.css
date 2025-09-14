@@ -1,0 +1,8 @@
+ body {
+   font-family: 'Poppins', sans-serif;
+   overflow-x: hidden;
+   background-color: var(--bg-dark-primary);
+   color: var(--text-light);
+   background-image: radial-gradient(circle at top left, rgba(67, 56, 202, 0.15), transparent 30%),
+     radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.15), transparent 30%);
+ }
