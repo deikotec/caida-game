@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" data-arp="">
       <body className={`${inter.className} bg-gray-900 text-white`}>
         <AuthProvider>
           {children}
